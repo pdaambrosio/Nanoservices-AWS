@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "1c59d9c1-a8e2-4d32-be93-edf26ef1e5e1",
+		"name": "nanoservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "handlerHttp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "image/jpeg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/home/kali-user/Downloads/Border-Collie-01.jpg"
+					}
+				},
+				"url": {
+					"raw": "https://d481uh4xda.execute-api.us-east-1.amazonaws.com/dev/images",
+					"protocol": "https",
+					"host": [
+						"d481uh4xda",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"images"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
