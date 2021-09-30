@@ -108,3 +108,7 @@ dist
 
 # ServerLess Framework
 .serverless
+
+# Terraforms
+.terraform*
+terraform.tfstate*
