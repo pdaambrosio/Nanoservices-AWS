@@ -10,7 +10,7 @@ AWS.config.update({
 
 const upload = body => {
     const id = uuid();
-    return new Promisse((resolv, reject) => {
+    return new Promise((resolve, reject) => {
         S3.putObject({
             Bucket: BUCKET,
             Key: id + '.jpg',
@@ -21,7 +21,7 @@ const upload = body => {
             if (err) {
                 return reject(err);
             }
-            return resolv({
+            return resolve({
                 bucket: BUCKET,
                 key: id + '.jpg'
             });
