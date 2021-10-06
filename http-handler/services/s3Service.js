@@ -1,20 +1,16 @@
 const AWS = require('aws-sdk');
-const uuid = require('uuid/v4');
+const uuid = require('uuid');
 
-const S3 = new AWS.S3();
-const BUCKET = 'http-handler-images';
-
-AWS.config.update({
-    region: 'us-east-1'
-});
+const bucket = 'http-handler-images';
+const s3 = new AWS.S3({apiVersion: '2006-03-01', region: 'us-east-1'});
 
 const upload = body => {
     const id = uuid();
     return new Promise((resolve, reject) => {
-        S3.putObject({
-            Bucket: BUCKET,
+        s3.putObject({
+            Bucket: bucket,
             Key: id + '.jpg',
-            Body: new Buffer(body.replace(/^data:image\/\w+;base64,/, ""),'base64'),
+            Body: body,
             ContentType: 'image/jpeg',
             ContentEncoding: 'base64'
         }, (err) => {
@@ -22,7 +18,7 @@ const upload = body => {
                 return reject(err);
             }
             return resolve({
-                bucket: BUCKET,
+                bucket: bucket,
                 key: id + '.jpg'
             });
         });
