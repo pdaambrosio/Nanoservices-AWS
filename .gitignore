@@ -112,3 +112,4 @@ dist
 # Terraforms
 .terraform*
 terraform.tfstate*
+*.tfstate
