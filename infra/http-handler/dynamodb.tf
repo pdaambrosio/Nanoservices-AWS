@@ -4,6 +4,7 @@ resource "aws_dynamodb_table" "table_images" {
     read_capacity = 5
     write_capacity = 5
     hash_key = "id"
+    tags = var.tags
 
     attribute {
       name = "id"
