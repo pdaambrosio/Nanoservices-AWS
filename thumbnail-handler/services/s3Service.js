@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 
 const s3 = new AWS.S3({apiVersion: '2006-03-01', region: 'us-east-1'});
-const bucket = 'thumbnail-images';
+const bucket = 'thumbnail-handler-images';
 
 module.exports.getObject = (bucket, key) => {
     return new Promisse((resolve, reject) => {
