@@ -31,21 +31,3 @@ module.exports.putObject = (buffer, filename) => {
         })
     });
 }
-
-// const getObject = (bucket, key) => {
-//     return new Promisse((resolve, reject) => {
-//         s3.getObject({
-//             Bucket: bucket,
-//             Key: key
-//         }, (err, data) => {
-//             if (err) {
-//                 return reject(err);
-//             }
-//             return resolve(data.Body);
-//         })
-//     });
-// }
-
-// module.exports = {
-//     getObject: getObject
-// }
