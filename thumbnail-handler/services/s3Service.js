@@ -1,10 +1,10 @@
 const AWS = require('aws-sdk');
 
 const s3 = new AWS.S3({apiVersion: '2006-03-01', region: 'us-east-1'});
-const bucket = 'thumbnail-handler-images';
+const bucketS3 = 'thumbnail-handler-images';
 
 module.exports.getObject = (bucket, key) => {
-    return new Promisse((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         s3.getObject({
             Bucket: bucket,
             Key: key
@@ -20,7 +20,7 @@ module.exports.getObject = (bucket, key) => {
 module.exports.putObject = (buffer, filename) => {
     return new Promise((resolve, reject) => {
         s3.putObject({
-            Bucket: bucket,
+            Bucket: bucketS3,
             Key: 'thumbnail-' + filename,
             Body: buffer
         }, (err, data) => {
