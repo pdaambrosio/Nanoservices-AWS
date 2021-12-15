@@ -12,3 +12,8 @@ module "filter-handler" {
   source                = "./filter-handler"
   region                = var.region
 }
+
+module "image-tagging-filter" {
+  source                = "./image-tagging-filter"
+  region                = var.region
+}
