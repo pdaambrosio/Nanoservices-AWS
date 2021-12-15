@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const rekognition = new AWS.Rekognition({region: 'us-east-1'});
 
 module.exports.data = (bucket, key) => {
-    return new Promisse((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         rekognition.detectLabels({
             Image: {
                 S3Object: {
