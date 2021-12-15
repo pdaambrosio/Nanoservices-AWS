@@ -1,18 +1,10 @@
-'use strict';
+const rekognitionService = require("./services/rekognitionService.js");
 
 module.exports.tag = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+    const s3Info = JSON.parse(event.Records[0].Sns.Message);
+    const bucket = s3Info.Records[0].s3.bucket.name;
+    const key = s3Info.Records[0].s3.object.key;
+    const data = await rekognitionService.data(bucket, key);
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+    console.log(data.Labels);
 };

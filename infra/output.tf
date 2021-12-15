@@ -5,3 +5,7 @@ output "http-handler" {
 output "thumbnail-handler" {
   value = module.thumbnail-handler
 }
+
+output "image-tagging-filter" {
+  value = module.image-tagging-filter
+}
