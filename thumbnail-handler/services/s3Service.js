@@ -27,7 +27,10 @@ module.exports.putObject = (buffer, filename) => {
             if (err) {
                 return reject(err);
            }
-           return resolve(data);
+           return resolve({
+               bucket: bucketS3,
+               key: 'thumbnail-' + filename
+           });
         })
     });
 }
