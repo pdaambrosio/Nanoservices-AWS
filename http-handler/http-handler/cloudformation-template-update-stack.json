@@ -84,7 +84,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/http-handler/dev/1646242079381-2022-03-02T17:27:59.381Z/http-handler.zip"
+          "S3Key": "serverless/http-handler/dev/1646405107538-2022-03-04T14:45:07.538Z/http-handler.zip"
         },
         "Handler": "handler.upload",
         "Runtime": "nodejs12.x",
@@ -97,14 +97,14 @@
         "UploadLogGroup"
       ]
     },
-    "UploadLambdaVersionr4Q5xC5xg9VI5oyWlexaRXfbyZm0RB9bxpsCgFVRYE": {
+    "UploadLambdaVersion0zRpyRPyNtHhu5spL7TgrKAuWeK5uWneqDdAQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UploadLambdaFunction"
         },
-        "CodeSha256": "6pjeYFmlyMZ31CccXkL3LHSNRFobD8VuIHmh0fvhdXQ="
+        "CodeSha256": "HzxAhv2a/gbjH7duSEF+8HVyrfzkK3OHJNcuoQYsGZw="
       }
     },
     "ApiGatewayRestApi": {
@@ -180,7 +180,7 @@
         "UploadLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1646242077907": {
+    "ApiGatewayDeployment1646405106131": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -242,7 +242,7 @@
     "UploadLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UploadLambdaVersionr4Q5xC5xg9VI5oyWlexaRXfbyZm0RB9bxpsCgFVRYE"
+        "Ref": "UploadLambdaVersion0zRpyRPyNtHhu5spL7TgrKAuWeK5uWneqDdAQ"
       },
       "Export": {
         "Name": "sls-http-handler-dev-UploadLambdaFunctionQualifiedArn"
