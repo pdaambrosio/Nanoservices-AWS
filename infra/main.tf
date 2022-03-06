@@ -17,3 +17,8 @@ module "image-tagging-filter" {
   source                = "./image-tagging-filter"
   region                = var.region
 }
+
+module "general" {
+  source                = "./general"
+  region                = var.region
+}
