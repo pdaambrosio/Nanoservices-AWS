@@ -11,7 +11,7 @@ module "vpc" {
     enable_nat_gateway = false
     enable_vpn_gateway = false
 
-    tags = "${var.tags}"
+    tags = var.tags
 }
 
 module "security-group" {
