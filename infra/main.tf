@@ -1,24 +1,24 @@
 module "http-handler" {
-  source                = "./http-handler"
-  region                = var.region
+  source = "./http-handler"
+  region = var.region
 }
 
 module "thumbnail-handler" {
-  source                = "./thumbnail-handler"
-  region                = var.region
+  source = "./thumbnail-handler"
+  region = var.region
 }
 
 module "filter-handler" {
-  source                = "./filter-handler"
-  region                = var.region
+  source = "./filter-handler"
+  region = var.region
 }
 
 module "image-tagging-filter" {
-  source                = "./image-tagging-filter"
-  region                = var.region
+  source = "./image-tagging-filter"
+  region = var.region
 }
 
 module "general" {
-  source                = "./general"
-  region                = var.region
+  source = "./general"
+  region = var.region
 }
