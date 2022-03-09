@@ -7,7 +7,8 @@ help:
 	@echo '	make lint			= execute file validation in terraform'
 	@echo '	make plan			= execute terraform plan'
 	@echo '	make terraform_deploy		= execute terraform deploy'
-	@echo '	make serverless__deploy		= execute serverless deploy (depends on terraform deployment)'
+	@echo '	make terraform_destroy		= execute terraform destroy'
+	@echo '	make serverless_deploy		= execute serverless deploy (depends on terraform deployment)'
 	@echo '	make deploy			= deploy all terraform infrastructure and nanoservices with serverless framework'
 	@echo '	make infra			= deploy only terraform infrastructure'
 	@echo '	make destroy			= destroy all terraform infrastructure and nanoservices'
@@ -30,6 +31,11 @@ terraform_deploy:
 	@echo "\nTerraform deploy\n"
 	@cd infra ;\
 	terraform apply -auto-approve 
+
+terraform_destroy:
+	@echo "\nTerraform destroy\n"
+	@cd infra ;\
+	terraform destroy -auto-approve 
 
 serverless_deploy:
 	@echo "\nServerless deploy\n"
