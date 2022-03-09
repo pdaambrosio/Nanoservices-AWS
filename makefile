@@ -4,29 +4,30 @@ help:
 	@echo Makefile for generating infrastructure and nanoservices
 	@echo 
 	@echo Usage:
-	@echo '	make terraform_lint	= execute file validation in terraform'
-	@echo '	make terraform_plan	= execute terraform plan'
-	@echo '	make terraform_deploy	= execute terraform deploy'
-	@echo '	make deploy		= deploy all terraform infrastructure and nanoservices with serverless framework'
-	@echo '	make infra		= deploy only terraform infrastructure'
-	@echo '	make destroy		= destroy all terraform infrastructure and nanoservices'
+	@echo '	make lint			= execute file validation in terraform'
+	@echo '	make plan			= execute terraform plan'
+	@echo '	make terraform_deploy		= execute terraform deploy'
+	@echo '	make serverless__deploy		= execute serverless deploy (depends on terraform deployment)'
+	@echo '	make deploy			= deploy all terraform infrastructure and nanoservices with serverless framework'
+	@echo '	make infra			= deploy only terraform infrastructure'
+	@echo '	make destroy			= destroy all terraform infrastructure and nanoservices'
 	@echo
 
-deploy: terraform_lint terraform_plan terraform_deploy serverless_deploy
+deploy: lint plan terraform_deploy serverless_deploy
 
-terraform_lint:
-	@echo "Terraform lint (fmt and validate)\n"
+lint:
+	@echo "\nTerraform lint (fmt and validate)\n"
 	@cd infra ;\
 	terraform fmt ;\
 	terraform validate -json
 
-terraform_plan:
+plan:
 	@echo "\nTerraform plan\n"
 	@cd infra ;\
 	terraform plan
 
 terraform_deploy:
-	@echo "Terraform deploy"
+	@echo "\nTerraform deploy\n"
 	@cd infra ;\
 	terraform apply -auto-approve 
 

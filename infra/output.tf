@@ -10,10 +10,6 @@ output "image-tagging-filter" {
   value = module.image-tagging-filter
 }
 
-output "post-processing-queue-arn" {
-  value = module.general
-}
-
-output "post-processing-queue-url" {
+output "general" {
   value = module.general
 }
