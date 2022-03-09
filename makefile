@@ -38,6 +38,6 @@ destroy:
 	@echo "\nDetroy all\n"
 	@cd infra ;\
 	terraform destroy --auto-approve
-	for dir in $(ls |egrep 'handler|tagging'); do (cd "$dir" && serverless remove --aws-profile pdajgs); done
+	for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && serverless remove --aws-profile pdajgs); done
 
 .ONESHELL:
