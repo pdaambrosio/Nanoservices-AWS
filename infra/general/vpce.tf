@@ -4,7 +4,11 @@ resource "aws_vpc_endpoint" "dynamodb-vpce" {
   vpc_endpoint_type = "Gateway"
 
 
-  tags = var.tags
+  tags = {
+    Name        = "${var.vpc_name}-dynamodb-vpce"
+    Environment = var.tags.Environment
+    Terraform   = var.tags.Terraforms
+  }
 }
 
 resource "aws_vpc_endpoint_route_table_association" "dynamodb-association" {
