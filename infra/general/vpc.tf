@@ -61,8 +61,8 @@ resource "aws_route_table" "elasticsearch-route-table" {
   vpc_id = aws_vpc.elasticsearch-vpc.id
   tags = {
     Name        = var.vpc_name
-    Environment = var.tags.environment
-    Terraform   = var.tags.terraforms
+    Environment = var.tags.Environment
+    Terraform   = var.tags.Terraforms
   }
 }
 
