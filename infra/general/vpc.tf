@@ -36,7 +36,7 @@ resource "aws_vpc" "elasticsearch-vpc" {
   assign_generated_ipv6_cidr_block = false
 
   tags = {
-    Name        = var.vpc_name
+    Name        = "${var.vpc_name}-vpc"
     Environment = var.tags.Environment
     Terraform   = var.tags.Terraforms
   }
@@ -60,7 +60,7 @@ resource "aws_subnet" "elasticsearch-vpc-private" {
 resource "aws_route_table" "elasticsearch-route-table" {
   vpc_id = aws_vpc.elasticsearch-vpc.id
   tags = {
-    Name        = var.vpc_name
+    Name        = "${var.vpc_name}-route-table"
     Environment = var.tags.Environment
     Terraform   = var.tags.Terraforms
   }
@@ -92,5 +92,9 @@ resource "aws_security_group" "elasticsearch-security-group" {
     self      = true
   }
 
-  tags = var.tags
+  tags = {
+    Name        = "${var.vpc_name}-security-group"
+    Environment = var.tags.Environment
+    Terraform   = var.tags.Terraforms
+  }
 }

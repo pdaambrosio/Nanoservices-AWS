@@ -8,7 +8,7 @@ variable "prefix" {
 
 variable "vpc_name" {
   type    = string
-  default = "elasticsearch-vpc"
+  default = "elasticsearch"
 }
 
 variable "tags" {
