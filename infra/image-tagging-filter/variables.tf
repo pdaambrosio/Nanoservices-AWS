@@ -2,16 +2,16 @@ variable "region" {
 }
 
 variable "prefix" {
-  type = string
+  type    = string
   default = "image-tagging-filter"
 }
 
 variable "tags" {
-    type = map(string)
-    default = {
-        environment = "lab",
-        terraforms = "true"
-    }
+  type = map(string)
+  default = {
+    environment = "lab",
+    terraforms  = "true"
+  }
 }
 
 variable "iam_policy_arn" {

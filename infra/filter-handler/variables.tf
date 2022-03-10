@@ -2,14 +2,14 @@ variable "region" {
 }
 
 variable "prefix" {
-  type = string
+  type    = string
   default = "filter-handler"
 }
 
 variable "tags" {
-    type = map(string)
-    default = {
-        environment = "lab",
-        terraforms = "true"
-    }
+  type = map(string)
+  default = {
+    environment = "lab",
+    terraforms  = "true"
+  }
 }

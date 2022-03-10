@@ -1,11 +1,11 @@
 resource "aws_sns_topic" "sns-handler-images-topic" {
-    name = "s3-handler-images-topic"
-    tags = var.tags
+  name = "s3-handler-images-topic"
+  tags = var.tags
 }
 
 resource "aws_sns_topic_policy" "sns-handler-images-topic-policy" {
-    arn = aws_sns_topic.sns-handler-images-topic.arn
-    policy = data.aws_iam_policy_document.sns-handler-images-iam-policy.json
+  arn    = aws_sns_topic.sns-handler-images-topic.arn
+  policy = data.aws_iam_policy_document.sns-handler-images-iam-policy.json
 }
 
 data "aws_iam_policy_document" "sns-handler-images-iam-policy" {

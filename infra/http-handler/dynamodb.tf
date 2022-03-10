@@ -1,13 +1,13 @@
 resource "aws_dynamodb_table" "table_images" {
-    name = "images"
-    billing_mode = "PROVISIONED"
-    read_capacity = 5
-    write_capacity = 5
-    hash_key = "id"
-    tags = var.tags
+  name           = "images"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "id"
+  tags           = var.tags
 
-    attribute {
-      name = "id"
-      type = "S"
-    }
+  attribute {
+    name = "id"
+    type = "S"
+  }
 }

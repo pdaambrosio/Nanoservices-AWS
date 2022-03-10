@@ -2,25 +2,25 @@ variable "region" {
 }
 
 variable "prefix" {
-  type = string
+  type    = string
   default = "general"
 }
 
 variable "vpc_name" {
-  type = string
+  type    = string
   default = "elasticsearch-vpc"
 }
 
 variable "tags" {
-    type = map(string)
-    default = {
-        environment = "lab",
-        terraforms  = "true"
-    }
+  type = map(string)
+  default = {
+    Environment = "lab",
+    Terraforms  = "true"
+  }
 }
 
 variable "cidr" {
-  type = string
+  type    = string
   default = "172.32.0.0/16"
 }
 
