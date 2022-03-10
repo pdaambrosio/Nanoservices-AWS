@@ -1,32 +1,3 @@
-# module "vpc" {
-#     source  = "terraform-aws-modules/vpc/aws"
-#     version = "2.77.0"
-
-#     name = var.vpc_name
-#     cidr = var.cidr
-
-#     azs                 = var.availability_zones
-#     private_subnets     = var.private_subnets
-
-#     enable_nat_gateway = false
-#     enable_vpn_gateway = false
-
-#     tags = var.tags
-# }
-
-# module "security-group" {
-#   source  = "terraform-aws-modules/security-group/aws"
-#   version = "4.8.0"
-
-#   name          = "${var.vpc_name}-default-sg"
-#   description   = "Default security group to allow inbound/outbound from the VPC"
-#   vpc_id        = module.vpc.vpc_id
-
-#   ingress_cidr_blocks   = var.private_subnets
-#   ingress_rules         = ["all-all"]
-# }
-
-## root version (old school)
 resource "aws_vpc" "elasticsearch-vpc" {
   cidr_block       = var.cidr
   instance_tenancy = "default"
