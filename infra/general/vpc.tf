@@ -37,8 +37,8 @@ resource "aws_vpc" "elasticsearch-vpc" {
 
   tags = {
     Name        = var.vpc_name
-    Environment = var.tags.environment
-    Terraform   = var.tags.terraforms
+    Environment = var.tags.Environment
+    Terraform   = var.tags.Terraforms
   }
 }
 
@@ -52,8 +52,8 @@ resource "aws_subnet" "elasticsearch-vpc-private" {
 
   tags = {
     Name        = join("-", [var.vpc_name, var.availability_zones[count.index]])
-    Environment = var.tags.environment
-    Terraform   = var.tags.terraforms
+    Environment = var.tags.Environment
+    Terraform   = var.tags.Terraforms
   }
 }
 
