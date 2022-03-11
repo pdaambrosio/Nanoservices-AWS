@@ -1,1 +1,1 @@
-# Nanoservices-AWS
+# Terraform and Serverless Framework
