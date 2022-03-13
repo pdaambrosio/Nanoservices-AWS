@@ -6,10 +6,10 @@ output "post-processing-queue-url" {
   value = aws_sqs_queue.post-processing-image.url
 }
 
-# output "elasticsearch-endpoint" {
-#   value = aws_elasticsearch_domain.elasticsearch-images.endpoint
-# }
+output "elasticsearch-endpoint" {
+  value = aws_elasticsearch_domain.elasticsearch-images.endpoint
+}
 
-# output "kibana-endpoint" {
-#   value = aws_elasticsearch_domain.elasticsearch-images.kibana_endpoint
-# }
+output "kibana-endpoint" {
+  value = aws_elasticsearch_domain.elasticsearch-images.kibana_endpoint
+}
