@@ -18,6 +18,11 @@ module "image-tagging-filter" {
   region = var.region
 }
 
+module "image-handler-consumer" {
+  source = "./image-handler-consumer"
+  region = var.region
+}
+
 module "general" {
   source = "./general"
   region = var.region
