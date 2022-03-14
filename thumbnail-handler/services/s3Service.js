@@ -21,7 +21,7 @@ module.exports.putObject = (buffer, filename) => {
     return new Promise((resolve, reject) => {
         s3.putObject({
             Bucket: bucketS3,
-            Key: 'thumbnail-' + filename,
+            Key: filename,
             Body: buffer
         }, (err, data) => {
             if (err) {
@@ -29,7 +29,7 @@ module.exports.putObject = (buffer, filename) => {
            }
            return resolve({
                bucket: bucketS3,
-               key: 'thumbnail-' + filename
+               key: filename
            });
         })
     });
