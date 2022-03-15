@@ -8,5 +8,15 @@ provider:
   lambdaHashingVersion: 20201221
 
 functions:
-  hello:
-    handler: handler.hello
+  consumer:
+    handler: handler.consumer
+    role: arn:aws:iam::489716104000:role/image-handler-consumer-role
+    vpc:
+      subnetIds:
+        - subnet-0351793bcf9f3b727
+        - subnet-0e198480ab3570116
+        - subnet-090ec971a10f15432
+      securityGroupIds:
+        - sg-04ec574451ce9ec61
+    events:
+      - sqs: arn:aws:sqs:us-east-1:489716104000:post-processing-image-queue
