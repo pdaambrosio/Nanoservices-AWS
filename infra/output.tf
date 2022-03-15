@@ -10,6 +10,10 @@ output "image-tagging-filter" {
   value = module.image-tagging-filter
 }
 
+output "image-handler-consumer" {
+  value = module.image-handler-consumer
+}
+
 output "general" {
   value = module.general
 }
