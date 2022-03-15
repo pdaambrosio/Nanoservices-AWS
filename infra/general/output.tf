@@ -1,3 +1,11 @@
+output "elasticsearch-vpc" {
+  value = aws_vpc.elasticsearch-vpc.id
+}
+
+output "elasticsearch-vpc-subnets" {
+  value = ["${aws_subnet.elasticsearch-vpc-private.*.id}"]
+}
+
 output "post-processing-queue-arn" {
   value = aws_sqs_queue.post-processing-image.arn
 }
