@@ -1,6 +1,13 @@
-'use strict';
+const AWS = require('aws-sdk');
+const dynamodb = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 
-module.exports.hello = async (event) => {
+const { Client } = require('@elastic/elasticsearch')
+const client = new Client({
+  apiVersion: "7.10",
+  host: 'http://localhost:9200'
+})
+
+module.exports.consumer = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(
