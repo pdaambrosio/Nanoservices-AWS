@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.1033.0",
-    "jimp": "^0.16.1"
+    "jimp": "^0.16.1",
+    "serverless-apigateway-log-retention": "^0.0.3"
   }
 }
