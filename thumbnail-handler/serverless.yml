@@ -1,5 +1,7 @@
 service: thumbnail-handler
 
+plugins:
+  - serverless-plugin-log-retention
 frameworkVersion: '2'
 
 provider:
@@ -13,3 +15,4 @@ functions:
     role: arn:aws:iam::489716104000:role/thumbnail-handler-role
     events:
       - sns: arn:aws:sns:us-east-1:489716104000:s3-handler-images-topic
+    logRetentionInDays: 7

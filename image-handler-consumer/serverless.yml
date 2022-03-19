@@ -1,5 +1,7 @@
 service: image-handler-consumer
 
+plugins:
+  - serverless-plugin-log-retention
 frameworkVersion: '2'
 
 provider:
@@ -19,6 +21,7 @@ functions:
       securityGroupIds:
         - sg-04ec574451ce9ec61
     provisionedConcurrency: 1
+    logRetentionInDays: 7
 
     events:
       - sqs: arn:aws:sqs:us-east-1:489716104000:post-processing-image-queue

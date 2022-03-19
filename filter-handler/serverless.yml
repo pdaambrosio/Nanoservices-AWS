@@ -1,5 +1,7 @@
 service: filter-handler
 
+plugins:
+  - serverless-plugin-log-retention
 frameworkVersion: '2'
 
 provider:

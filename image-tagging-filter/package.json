@@ -12,5 +12,8 @@
   "dependencies": {
     "aws-sdk": "^2.1046.0",
     "serverless-apigateway-log-retention": "^0.0.3"
+  },
+  "devDependencies": {
+    "serverless-plugin-log-retention": "^2.0.0"
   }
 }
