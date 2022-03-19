@@ -23,7 +23,7 @@ module.exports.putObject = (buffer, filename) => {
             Bucket: bucketS3,
             Key: filename,
             Body: buffer
-        }, (err, data) => {
+        }, (err) => {
             if (err) {
                 return reject(err);
            }
