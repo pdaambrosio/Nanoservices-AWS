@@ -1,25 +1,25 @@
-const elasticsearchService = require('./services/elasticsearchService');
-const dynamodbService = require('./services/dynamodbService');
+const elasticsearchService = require("./services/elasticsearchService");
+const dynamodbService = require("./services/dynamodbService");
 
 module.exports.consumer = async (event) => {
   for (const record of event.Records) {
     const item = JSON.parse(record.body);
     const dbItem = await dynamodbService.getItem(item.key);
     switch (item.eventType) {
-      case 'TAG_EVENT':
+      case "TAG_EVENT":
         await elasticsearchService.index({
           id: item.key,
           tags: item.labels,
         });
         dbItem.labels = item.labels;
         break;
-      case 'FILTER_EVENT':
+      case "FILTER_EVENT":
         dbItem.blackWhiteFilter = {
           bucket: item.bucket,
           key: item.key,
         };
         break;
-      case 'THUMBNAIL_EVENT':
+      case "THUMBNAIL_EVENT":
         dbItem.thumbnail = {
           bucket: item.bucket,
           key: item.key,
@@ -28,5 +28,5 @@ module.exports.consumer = async (event) => {
     }
     await elasticsearchService.put(dbItem);
   }
-  return { message: 'Message consumed successfully', event };
+  return { message: "Message consumed successfully", event };
 };
