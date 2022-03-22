@@ -1,17 +1,17 @@
 module.exports = {
-  "root": true,
+  root: true,
   env: {
     es2021: true,
     node: true,
   },
-  extends: [
-    'eslint:recommended',
-  ],
+  extends: ["eslint:recommended"],
+  plugins: ["prettier"],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
   rules: {
-    'no-console': 'off',
+    "no-console": "off",
+    "prettier/prettier": "error",
   },
 };
