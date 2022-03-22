@@ -24,3 +24,19 @@ functions:
          path: images
          method: post
     logRetentionInDays: 7
+
+  get:
+    handler: handler.get
+    role: arn:aws:iam::489716104000:role/image-handler-consumer-role
+    vpc:
+      subnetIds:
+        - subnet-0351793bcf9f3b727
+        - subnet-0e198480ab3570116
+        - subnet-090ec971a10f15432
+      securityGroupIds:
+        - sg-04ec574451ce9ec61
+    events:
+     - http:
+         path: images
+         method: get
+    logRetentionInDays: 7
