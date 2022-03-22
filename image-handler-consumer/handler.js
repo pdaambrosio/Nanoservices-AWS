@@ -1,25 +1,32 @@
-const AWS = require('aws-sdk');
-const dynamodb = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
-
-const { Client } = require('@elastic/elasticsearch')
-const client = new Client({
-  apiVersion: "7.10",
-  host: 'http://localhost:9200'
-})
+const elasticsearchService = require('./services/elasticsearchService');
+const dynamodbService = require('./services/dynamodbService');
 
 module.exports.consumer = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+  for (const record of event.Records) {
+    const item = JSON.parse(record.body);
+    const dbItem = await dynamodbService.getItem(item.key);
+    switch (item.eventType) {
+      case 'TAG_EVENT':
+        await elasticsearchService.index({
+          id: item.key,
+          tags: item.labels,
+        });
+        dbItem.labels = item.labels;
+        break;
+      case 'FILTER_EVENT':
+        dbItem.blackWhiteFilter = {
+          bucket: item.bucket,
+          key: item.key,
+        };
+        break;
+      case 'THUMBNAIL_EVENT':
+        dbItem.thumbnail = {
+          bucket: item.bucket,
+          key: item.key,
+        };
+        break;
+    }
+    await elasticsearchService.put(dbItem);
+  }
+  return { message: 'Message consumed successfully', event };
 };
