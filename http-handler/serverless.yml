@@ -4,6 +4,7 @@ plugins:
   - serverless-apigw-binary
   - serverless-plugin-log-retention
   - serverless-deployment-bucket
+
 custom:
   apigwBinary:
     types:

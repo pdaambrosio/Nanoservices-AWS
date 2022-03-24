@@ -3,6 +3,7 @@ service: filter-handler
 plugins:
   - serverless-plugin-log-retention
   - serverless-deployment-bucket
+
 frameworkVersion: '2'
 
 provider:

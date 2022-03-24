@@ -3,6 +3,7 @@ service: image-handler-consumer
 plugins:
   - serverless-plugin-log-retention
   - serverless-deployment-bucket
+
 frameworkVersion: '2'
 
 provider:
