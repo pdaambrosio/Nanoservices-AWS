@@ -10,6 +10,13 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  deploymentBucket:
+    name: apps-${self:provider.region}.deploys
+    blockPublicAccess: true
+    serverSideEncryption: AES256
+    tags:
+      - Key: Environment
+        Value: develop
 
 functions:
   filter:
