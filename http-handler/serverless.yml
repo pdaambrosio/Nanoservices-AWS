@@ -10,12 +10,13 @@ custom:
     types:
       - 'image/jpeg'
 
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 provider:
   name: aws
+  region: us-east-1
   runtime: nodejs12.x
-  lambdaHashingVersion: 
+  lambdaHashingVersion: 20201221
   deploymentBucket:
     name: apps-${self:provider.region}.deploys
     blockPublicAccess: true

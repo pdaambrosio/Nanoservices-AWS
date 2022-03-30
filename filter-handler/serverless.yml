@@ -4,7 +4,7 @@ plugins:
   - serverless-plugin-log-retention
   - serverless-deployment-bucket
 
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 provider:
   name: aws
