@@ -8,6 +8,7 @@ frameworkVersion: '3'
 
 provider:
   name: aws
+  region: us-east-1
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
   deploymentBucket:

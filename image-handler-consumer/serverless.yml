@@ -8,6 +8,7 @@ frameworkVersion: '3'
 
 provider:
   name: aws
+  region: us-east-1
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
   deploymentBucket:
@@ -23,12 +24,12 @@ functions:
     role: arn:aws:iam::489716104000:role/image-handler-consumer-role
     vpc:
       subnetIds:
-        - subnet-0351793bcf9f3b727
-        - subnet-0e198480ab3570116
-        - subnet-090ec971a10f15432
+        - subnet-06b2176c7e2a427d5
+        - subnet-037ee7749f1ac10d4
+        - subnet-070af891c6371b94d
       securityGroupIds:
-        - sg-04ec574451ce9ec61
-    provisionedConcurrency: 1
+        - sg-0d5fa29a0dd1bbf19
+    reservedConcurrency: 1
     logRetentionInDays: 7
 
     events:
