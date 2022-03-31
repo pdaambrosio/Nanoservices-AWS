@@ -24,12 +24,12 @@ functions:
     role: arn:aws:iam::489716104000:role/image-handler-consumer-role
     vpc:
       subnetIds:
-        - subnet-06b2176c7e2a427d5
-        - subnet-037ee7749f1ac10d4
-        - subnet-070af891c6371b94d
+        - subnet-034bc4f9af21a760a
+        - subnet-091561c0462e68489
+        - subnet-0e73dead4b5c6ee01
       securityGroupIds:
-        - sg-0d5fa29a0dd1bbf19
-    reservedConcurrency: 1
+        - sg-024ceedd712e197fc
+    # reservedConcurrency: 0
     logRetentionInDays: 7
 
     events:

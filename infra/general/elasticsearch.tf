@@ -1,4 +1,5 @@
 resource "aws_elasticsearch_domain" "elasticsearch-images" {
+  depends_on            = [aws_iam_service_linked_role.elasticsearch-images-linked-role]
   domain_name           = "elk-images"
   elasticsearch_version = "7.10"
   domain_endpoint_options {
