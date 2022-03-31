@@ -18,10 +18,11 @@ deploy: lint plan terraform_deploy serverless_deploy
 destroy: terraform_destroy serverless_destroy 
 
 lint:
-	@echo "\nTerraform lint (fmt and validate)\n"
+	@echo "\nTerraform lint (fmt and validate) and Serverless doctor\n"
 	@cd infra ;\
 	terraform fmt -recursive;\
 	terraform validate -json
+	for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" \ && serverless doctor); done
 
 plan:
 	@echo "\nTerraform plan\n"
