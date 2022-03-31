@@ -3,9 +3,10 @@
 # }
 
 resource "aws_s3_bucket" "bucket-handler-images" {
-  bucket = "${var.prefix}-images"
-  acl    = "private"
-  tags   = var.tags
+  bucket        = "${var.prefix}-images"
+  acl           = "private"
+  tags          = var.tags
+  force_destroy = true
   # server_side_encryption_configuration {
   #   rule {
   #     apply_server_side_encryption_by_default {
