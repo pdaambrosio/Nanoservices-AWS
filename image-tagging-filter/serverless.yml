@@ -2,12 +2,20 @@ service: image-tagging-filter
 
 plugins:
   - serverless-plugin-log-retention
-frameworkVersion: '2'
+  - serverless-deployment-bucket
+
+frameworkVersion: '3'
 
 provider:
   name: aws
+  region: us-east-1
   runtime: nodejs12.x
-  lambdaHashingVersion: 20201221
+  deploymentBucket:
+    name: apps-${self:provider.region}.deploys
+    blockPublicAccess: true
+    serverSideEncryption: AES256
+    tags:
+      Environment: develop
 
 functions:
   tag:
