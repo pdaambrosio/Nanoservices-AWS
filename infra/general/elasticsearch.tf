@@ -30,3 +30,10 @@ resource "aws_iam_service_linked_role" "elasticsearch-images-linked-role" {
   aws_service_name = "es.amazonaws.com"
   description      = "Allows Amazon ES to manage AWS resources for a domain."
 }
+
+resource "aws_ssm_parameter" "ssm-elasticsearch-endpoint" {
+  name        = "/${var.prefix}/elasticsearch-endpoint"
+  description = "Endpoint for Elasticsearch"
+  type        = "String"
+  value       = aws_elasticsearch_domain.elasticsearch-images.endpoint
+}
