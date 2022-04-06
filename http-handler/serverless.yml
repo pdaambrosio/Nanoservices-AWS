@@ -26,7 +26,7 @@ provider:
 functions:
   upload:
     handler: handler.upload
-    role: arn:aws:iam::489716104000:role/http-handler-role
+    role: ${ssm:/http-handler/http-handler-role}
     events:
      - http:
          path: images
@@ -35,14 +35,11 @@ functions:
 
   get:
     handler: handler.get
-    role: arn:aws:iam::489716104000:role/image-handler-consumer-role
+    role: ${ssm:/image-handler-consumer/image-handler-consumer-role}
     vpc:
-      subnetIds:
-        - subnet-034bc4f9af21a760a
-        - subnet-091561c0462e68489
-        - subnet-0e73dead4b5c6ee01
+      subnetIds: ${ssm:/general/elasticsearch-vpc-private}
       securityGroupIds:
-        - sg-024ceedd712e197fc
+        - ${ssm:/general/aws_security_group}
     events:
      - http:
          path: images

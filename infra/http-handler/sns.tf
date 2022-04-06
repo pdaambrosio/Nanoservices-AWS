@@ -47,3 +47,10 @@ data "aws_iam_policy_document" "sns-handler-images-iam-policy" {
     sid = "__default_statement_ID"
   }
 }
+
+resource "aws_ssm_parameter" "ssm-sns-handler-images-topic" {
+  name        = "/${var.prefix}/sns-handler-images-topic"
+  description = "The SNS topic to use for the http-handler lambda"
+  type        = "String"
+  value       = aws_sns_topic.sns-handler-images-topic.arn
+}

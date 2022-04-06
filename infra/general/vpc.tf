@@ -69,3 +69,17 @@ resource "aws_security_group" "elasticsearch-security-group" {
     Terraform   = var.tags.Terraforms
   }
 }
+
+resource "aws_ssm_parameter" "ssm-elasticsearch-vpc-private" {
+  name        = "/${var.prefix}/elasticsearch-vpc-private"
+  description = "The private subnets for the elasticsearch cluster"
+  type        = "StringList"
+  value       = join(",", aws_subnet.elasticsearch-vpc-private.*.id)
+}
+
+resource "aws_ssm_parameter" "ssm-aws_security_group" {
+  name        = "/${var.prefix}/aws_security_group"
+  description = "The security group for the elasticsearch cluster"
+  type        = "String"
+  value       = aws_security_group.elasticsearch-security-group.id
+}
