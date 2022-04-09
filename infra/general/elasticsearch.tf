@@ -32,8 +32,8 @@ resource "aws_iam_service_linked_role" "elasticsearch-images-linked-role" {
 }
 
 resource "aws_elasticsearch_domain_policy" "policy-elk-images" {
-  domain_name = aws_elasticsearch_domain.elasticsearch-images.domain_name
-  policy = <<POLICY
+  domain_name     = aws_elasticsearch_domain.elasticsearch-images.domain_name
+  access_policies = <<POLICY
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -43,7 +43,7 @@ resource "aws_elasticsearch_domain_policy" "policy-elk-images" {
         "AWS": "*"
       },
       "Action": "es:*",
-      "Resource": "arn:aws:es:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:domain/${aws_elasticsearch_domain.elasticsearch-images.domain_name}/*"
+      "Resource": "${aws_elasticsearch_domain.elasticsearch-images.arn}/*"
     }
   ]
 }
