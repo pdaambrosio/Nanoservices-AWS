@@ -1,13 +1,14 @@
 const elasticsearch = require("@elastic/elasticsearch");
 const AWS = require("aws-sdk");
+const credentials = new AWS.SharedIniFileCredentials({ profile: "terraform" });
+AWS.config.credentials = credentials;
+const ssmClient = new AWS.SSM({
+  apiVersion: "2014-11-06",
+  region: "us-east-1",
+});
 
-const getEndPoint = async (address) => {
+module.exports.getEndPoint = (address) => {
   return new Promise((resolve, reject) => {
-    const ssmClient = new AWS.SSM({
-      apiVersion: "2014-11-06",
-      region: "us-east-1",
-    });
-
     ssmClient.getParameter(
       {
         Name: address,
@@ -23,13 +24,17 @@ const getEndPoint = async (address) => {
   });
 };
 
-const client = new elasticsearch.Client({
-  apiVersion: "7.10",
-  node: await getEndPoint("/general/elasticsearch-endpoint"),
-});
+const elasticNode = async () => {
+  const response = await this.getEndPoint("/example/production/dbpass");
+  const client = new elasticsearch.Client({
+    apiVersion: "7.10",
+    node: String(`https://${response}`),
+  });
+  return client;
+};
 
 module.exports.search = async (query) => {
-  await client.search({
+  await elasticNode().search({
     index: "images",
     q: "tags:" + query,
   });
