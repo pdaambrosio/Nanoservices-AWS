@@ -23,7 +23,7 @@ module.exports.getEndPoint = (address) => {
 };
 
 const elasticNode = async () => {
-  const response = await this.getEndPoint("/example/production/dbpass");
+  const response = await this.getEndPoint("/general/elasticsearch-endpoint");
   const client = new elasticsearch.Client({
     apiVersion: "7.10",
     node: String(`https://${response}`),
