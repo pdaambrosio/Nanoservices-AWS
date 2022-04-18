@@ -1,12 +1,38 @@
 const elasticsearch = require("@elastic/elasticsearch");
-
-const client = new elasticsearch.Client({
-  apiVersion: "7.10",
-  node: "https://vpc-elk-images-wya4akkrwhq2qouvel7zymsea4.us-east-1.es.amazonaws.com",
+const AWS = require("aws-sdk");
+const ssmClient = new AWS.SSM({
+  apiVersion: "2014-11-06",
+  region: "us-east-1",
 });
 
+module.exports.getEndPoint = (address) => {
+  return new Promise((resolve, reject) => {
+    ssmClient.getParameter(
+      {
+        Name: address,
+        WithDecryption: true,
+      },
+      (err, data) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(data.Parameter.Value);
+      }
+    );
+  });
+};
+
+const elasticNode = async () => {
+  const response = await this.getEndPoint("/general/elasticsearch-endpoint");
+  const client = new elasticsearch.Client({
+    apiVersion: "7.10",
+    node: String(`https://${response}`),
+  });
+  return client;
+};
+
 module.exports.index = async (document) => {
-  await client.index({
+  await elasticNode().index({
     index: "images",
     type: "object",
     body: document,
