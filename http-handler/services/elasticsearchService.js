@@ -5,6 +5,9 @@ const ssmClient = new AWS.SSM({
   region: "us-east-1",
 });
 
+const credentials = new AWS.SharedIniFileCredentials({ profile: "terraform" });
+AWS.config.credentials = credentials;
+
 module.exports.getEndPoint = (address) => {
   return new Promise((resolve, reject) => {
     ssmClient.getParameter(
@@ -32,8 +35,10 @@ const elasticNode = async () => {
 };
 
 module.exports.search = async (query) => {
-  await elasticNode().search({
-    index: "images",
-    q: "tags:" + query,
+  await elasticNode().then((client) => {
+    client.indices.search({
+      index: "images",
+      q: "tags:" + query,
+    });
   });
 };
