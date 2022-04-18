@@ -1,7 +1,5 @@
 const elasticsearch = require("@elastic/elasticsearch");
 const AWS = require("aws-sdk");
-const credentials = new AWS.SharedIniFileCredentials({ profile: "terraform" });
-AWS.config.credentials = credentials;
 const ssmClient = new AWS.SSM({
   apiVersion: "2014-11-06",
   region: "us-east-1",
