@@ -32,9 +32,11 @@ const elasticNode = async () => {
 };
 
 module.exports.index = async (document) => {
-  await elasticNode().index({
-    index: "images",
-    type: "object",
-    body: document,
+  await elasticNode().then((client) => {
+    client.index({
+      index: "images",
+      type: "object",
+      body: document,
+    });
   });
 };

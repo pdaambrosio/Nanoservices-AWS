@@ -36,7 +36,7 @@ const elasticNode = async () => {
 
 module.exports.search = async (query) => {
   await elasticNode().then((client) => {
-    client.indices.search({
+    client.search({
       index: "images",
       q: "tags:" + query,
     });
