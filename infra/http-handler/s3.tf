@@ -26,7 +26,7 @@ resource "aws_s3_bucket_public_access_block" "block_public_access" {
 }
 
 resource "aws_s3_bucket_notification" "put-notification-sns" {
-  depends_on = [aws_sns_topic.sns-handler-images-topic, aws_s3_bucket.bucket-handler-images]
+  depends_on = [aws_iam_role_policy_attachment.lambda-http-attach]
   bucket     = aws_s3_bucket.bucket-handler-images.id
 
   topic {
