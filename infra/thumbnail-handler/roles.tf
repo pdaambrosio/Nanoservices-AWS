@@ -28,3 +28,10 @@ resource "aws_iam_role_policy" "lambda-thumbnail-kms" {
     ]
   })
 }
+
+resource "aws_ssm_parameter" "ssm-lambda-thumbnail-handler-role" {
+  name        = "/${var.prefix}/lambda-thumbnail-handler-role"
+  description = "Lambda handler for thumbnail generation"
+  type        = "String"
+  value       = aws_iam_role.lambda-thumbnail-role.arn
+}

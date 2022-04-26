@@ -20,6 +20,7 @@ provider:
 functions:
   filter:
     handler: handler.filter
-    role: arn:aws:iam::489716104000:role/thumbnail-handler-role
+    role: ${ssm:/thumbnail-handler/lambda-thumbnail-handler-role}
     events:
-      - sns: arn:aws:sns:us-east-1:489716104000:s3-handler-images-topic
+      - sns: ${ssm:/http-handler/sns-handler-images-topic}
+    logRetentionInDays: 7

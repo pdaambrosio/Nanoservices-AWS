@@ -28,3 +28,10 @@ resource "aws_iam_role_policy" "lambda-http-kms" {
     ]
   })
 }
+
+resource "aws_ssm_parameter" "ssm-http-handler-role" {
+  name        = "/${var.prefix}/http-handler-role"
+  description = "The role to use for the http-handler lambda"
+  type        = "String"
+  value       = aws_iam_role.lambda-http-role.arn
+}

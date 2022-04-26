@@ -15,19 +15,20 @@ help:
 	@echo
 
 deploy: lint plan terraform_deploy serverless_deploy
-destroy: terraform_destroy serverless_destroy 
+destroy: serverless_destroy terraform_destroy 
 
 lint:
 	@echo "\nTerraform lint (fmt and validate) and Serverless doctor\n"
-	@cd infra ;\
+	@cd infra;\
 	terraform fmt -recursive;\
 	terraform validate -json
-	for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless doctor); done
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless doctor); done
 
 plan:
 	@echo "\nTerraform plan\n"
-	@cd infra ;\
-	terraform plan
+	@cd infra;\
+	terraform plan;\
+	terraform get
 
 terraform_deploy:
 	@echo "\nTerraform deploy\n"
@@ -36,15 +37,13 @@ terraform_deploy:
 
 serverless_deploy:
 	@echo "\nServerless deploy\n"
-	for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless deploy --aws-profile pdajgs); done
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless deploy --aws-profile terraform); done
 
 terraform_destroy:
 	@echo "\nTerraform destroy\n"
-	@cd infra ;\
+	@cd infra;\
 	terraform destroy -auto-approve 
 
 serverless_destroy:
 	@echo "\nServerless destroy\n"
-	for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless remove --aws-profile pdajgs); done
-
-.ONESHELL:
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless remove --aws-profile terraform); done

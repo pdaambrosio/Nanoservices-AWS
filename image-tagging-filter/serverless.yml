@@ -20,7 +20,7 @@ provider:
 functions:
   tag:
     handler: handler.tag
-    role: arn:aws:iam::489716104000:role/image-tagging-filter-role
+    role: ${ssm:/image-tagging-filter/lambda-image-tagging-role}
     events:
-      - sns: arn:aws:sns:us-east-1:489716104000:s3-handler-images-topic
+      - sns: ${ssm:/http-handler/sns-handler-images-topic}
     logRetentionInDays: 7

@@ -30,3 +30,29 @@ resource "aws_iam_service_linked_role" "elasticsearch-images-linked-role" {
   aws_service_name = "es.amazonaws.com"
   description      = "Allows Amazon ES to manage AWS resources for a domain."
 }
+
+resource "aws_elasticsearch_domain_policy" "policy-elk-images" {
+  domain_name     = aws_elasticsearch_domain.elasticsearch-images.domain_name
+  access_policies = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "es:*",
+      "Resource": "${aws_elasticsearch_domain.elasticsearch-images.arn}/*"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_ssm_parameter" "ssm-elasticsearch-endpoint" {
+  name        = "/${var.prefix}/elasticsearch-endpoint"
+  description = "Endpoint for Elasticsearch"
+  type        = "String"
+  value       = aws_elasticsearch_domain.elasticsearch-images.endpoint
+}

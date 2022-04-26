@@ -28,3 +28,10 @@ resource "aws_iam_role_policy" "lambda-image-tagging-kms" {
     ]
   })
 }
+
+resource "aws_ssm_parameter" "ssm-lambda-image-tagging-role" {
+  name        = "/${var.prefix}/lambda-image-tagging-role"
+  description = "Lambda role for image tagging"
+  type        = "String"
+  value       = aws_iam_role.lambda-image-tagging-role.arn
+}

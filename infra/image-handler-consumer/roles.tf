@@ -28,3 +28,10 @@ resource "aws_iam_role_policy" "lambda-image-consumer-kms" {
     ]
   })
 }
+
+resource "aws_ssm_parameter" "ssm-image-handler-consumer-role" {
+  name        = "/${var.prefix}/image-handler-consumer-role"
+  description = "The role to use for the image-handler-consumer lambda"
+  type        = "String"
+  value       = aws_iam_role.lambda-image-consumer-role.arn
+}
