@@ -10,3 +10,10 @@ resource "aws_ssm_parameter" "ssm-post-processing-image" {
   type        = "String"
   value       = aws_sqs_queue.post-processing-image.arn
 }
+
+resource "aws_ssm_parameter" "ssm-sqs-url" {
+  name        = "/${var.prefix}/sqs-url"
+  description = "SQS queue for sqs url image"
+  type        = "String"
+  value       = aws_sqs_queue.post-processing-image.url
+}
