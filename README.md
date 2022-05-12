@@ -9,6 +9,7 @@ In short, this project will provisioning on AWS:
 * One ApiGateway
 * One instance of DynamoDB
 * One SNS queue and one SQS
+* One instance of OpenSearch
 
 ## Requirements
 
