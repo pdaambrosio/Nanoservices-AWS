@@ -9,3 +9,14 @@ In short, this project will provisioning on AWS:
 * One ApiGateway
 * One instance of DynamoDB
 * One SNS queue and one SQS
+
+## Requirements
+
+* Serverless Framework 3.80
+* Terraform 1.1.9
+
+Both must be properly configured with your AWS programmatic key.
+
+This link helps you install and configure the AWS CLI to get your programmatic key.:
+
+* https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
