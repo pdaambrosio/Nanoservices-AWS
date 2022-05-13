@@ -6,13 +6,16 @@ In short, this project will provisioning on AWS:
 
 * Four S3 Buckets (Three for images and one for lambdas deployment)
 * Four Lambdas to apply filter on images
-* One ApiGateway
-* One instance of DynamoDB
-* One SNS queue and one SQS
-* One instance of OpenSearch
+* An ApiGateway
+* An instance of DynamoDB
+* A SNS queue and one SQS
+* A instance of OpenSearch
+
+Attention.: I'm considering that you will use some Linux distribution for this project.
 
 ## Requirements
 
+* Node.js 14.19.1
 * Serverless Framework 3.80
 * Terraform 1.1.9
 
@@ -21,3 +24,9 @@ Both must be properly configured with your AWS programmatic key.
 This link helps you install and configure the AWS CLI to get your programmatic key.:
 
 * https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+
+And use these links to configure Node.js, Terraform and Serverless Framework.:
+
+* https://nodejs.org/en/download/package-manager/
+* https://www.terraform.io/downloads
+* https://www.serverless.com/framework/docs/providers/fn/guide/quick-start
