@@ -16,6 +16,9 @@ help:
 	@echo '	make destroy			= destroy all terraform infrastructure and nanoservices'
 	@echo
 
+RED='\033[0;31m'
+NC='\033[0m'
+
 build: npm_install
 analyze: lint plan
 deploy: terraform_deploy serverless_deploy
@@ -26,7 +29,7 @@ lint:
 	@cd infra;\
 	terraform fmt -recursive;\
 	terraform validate -json
-	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless doctor); done
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo ${RED}"\nApplication: $$dir"${NC} && serverless doctor); done
 
 plan:
 	@echo "\nTerraform plan\n"
@@ -36,7 +39,7 @@ plan:
 
 npm_install:
 	@echo "\nInstall Dependencies\n"
-	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && npm install); done
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo ${RED}"\nApplication: $$dir"${NC} && npm install); done
 
 terraform_deploy:
 	@echo "\nTerraform deploy\n"
@@ -45,7 +48,7 @@ terraform_deploy:
 
 serverless_deploy:
 	@echo "\nServerless deploy\n"
-	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless deploy --aws-profile terraform); done
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo ${RED}"\nApplication: $$dir"${NC} && serverless deploy --aws-profile terraform); done
 
 terraform_destroy:
 	@echo "\nTerraform destroy\n"
@@ -54,4 +57,4 @@ terraform_destroy:
 
 serverless_destroy:
 	@echo "\nServerless destroy\n"
-	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && serverless remove --aws-profile terraform); done
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo ${RED}"\nApplication: $$dir"${NC} && serverless remove --aws-profile terraform); done
