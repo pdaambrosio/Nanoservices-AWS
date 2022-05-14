@@ -16,6 +16,7 @@ Attention.: I'm considering that you will use some Linux distribution for this p
 ## Requirements
 
 * Node.js 14.19.1
+* NPM 8.8.0
 * Serverless Framework 3.80
 * Terraform 1.1.9
 
@@ -30,3 +31,23 @@ And use these links to configure Node.js, Terraform and Serverless Framework.:
 * https://nodejs.org/en/download/package-manager/
 * https://www.terraform.io/downloads
 * https://www.serverless.com/framework/docs/providers/fn/guide/quick-start
+
+## Installation
+
+To build this proveject is very simple, all commands were added in a make file.
+Since deploying OpenSearch is a long process, I'll show the output of the commands for follow along.
+
+Now, just clone the repository and run the following command:
+
+```bash
+make init
+make deploy
+```
+
+Because to the OpenSearch deployment is a long process, I will not show the output of the commands.
+
+And for description of each command, please refer to the make file with bellow command.
+    
+```bash
+make help
+```
