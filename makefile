@@ -14,6 +14,7 @@ help:
 	@echo '	make destroy			= destroy all terraform infrastructure and nanoservices'
 	@echo
 
+build: npm_install
 deploy: lint plan terraform_deploy serverless_deploy
 destroy: serverless_destroy terraform_destroy 
 
@@ -29,6 +30,10 @@ plan:
 	@cd infra;\
 	terraform plan;\
 	terraform get
+
+npm_install:
+	@echo "\nInstall Dependencies\n"
+	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo "\n$$dir" && npm install); done
 
 terraform_deploy:
 	@echo "\nTerraform deploy\n"
