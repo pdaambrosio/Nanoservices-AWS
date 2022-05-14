@@ -28,7 +28,7 @@ lint:
 	@echo "\nTerraform lint (fmt and validate) and Serverless doctor\n"
 	@cd infra;\
 	terraform fmt -recursive;\
-	terraform validate -json
+	terraform validate
 	@for dir in $$(ls |egrep 'handler|tagging'); do (cd "$$dir" && echo ${RED}"\nApplication: $$dir"${NC} && serverless doctor); done
 
 plan:
