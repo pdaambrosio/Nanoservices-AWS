@@ -35,6 +35,7 @@ And use these links to configure Node.js, Terraform and Serverless Framework.:
 ## Installation
 
 To build this proveject is very simple, all commands were added in a make file.
+
 Since deploying OpenSearch is a long process, I'll show the output of the commands for follow along.
 
 And for description of each command, please refer to the make file with bellow command.
@@ -50,4 +51,3 @@ make build
 make analyze
 make deploy
 ```
-Because to the OpenSearch deployment is a long process, I will not show the output of the commands.
