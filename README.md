@@ -47,6 +47,7 @@ Now, just clone the repository and run the following command:
 
 ```bash
 make build
+make analyze
 make deploy
 ```
 Because to the OpenSearch deployment is a long process, I will not show the output of the commands.
