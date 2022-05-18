@@ -20,8 +20,8 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 build: npm_install
-analyze: lint plan
-deploy: terraform_deploy serverless_deploy
+analyze: lint
+deploy: plan terraform_deploy serverless_deploy
 destroy: serverless_destroy terraform_destroy 
 
 lint:
