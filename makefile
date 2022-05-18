@@ -36,7 +36,6 @@ plan:
 	@echo "\nTerraform plan\n"
 	@cd infra;\
 	terraform plan;\
-	terraform get
 
 npm_install:
 	@echo "\nInstall Dependencies\n"
